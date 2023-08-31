@@ -1,13 +1,9 @@
-import sys
-B = 42
-lst = []
-cnt = 0
+nums = [int(input()) for _ in range(10)]
 
-for _ in range(10):
-    A = int(sys.stdin.readline())
-    C = A%B
-    if C not in lst:
-        lst.append(C)
-        cnt += 1
-        
-print(cnt)
+lst = []
+
+for num in nums:
+    lst.append(num%42)
+
+lst = set(lst)
+print(len(lst))
