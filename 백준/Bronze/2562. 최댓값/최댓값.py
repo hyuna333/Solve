@@ -1,12 +1,12 @@
-import sys
+lst = [int(input()) for _ in range(9)]
 
-mx = 0
-mx_idx = 0
-for i in range(1, 10):
-    N = int(sys.stdin.readline())
-    if mx < N:
-        mx = N
-        mx_idx = i
+mx = max(lst)
+ans = 0
+
+for i in range(9):
+    if lst[i] == mx:
+        ans = i+1
+        break
 
 print(mx)
-print(mx_idx)
+print(ans)
