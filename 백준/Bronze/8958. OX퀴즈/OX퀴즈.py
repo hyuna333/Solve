@@ -1,14 +1,16 @@
-import sys
-T = int(sys.stdin.readline())
+T = int(input())
 
 for _ in range(T):
-    lst = list(sys.stdin.readline())
-    cnt = sm = 0
-    for st in lst:
-        if st == 'O':
-            cnt += 1
-            sm += cnt
-        else:
-            cnt = 0
+    case = list(input())
 
-    print(sm)
+    score = 0
+    ans = 0
+
+    for i in range(len(case)):
+        if case[i] == 'O':
+            score += 1
+            ans += score
+        else:
+            score = 0
+
+    print(ans)
