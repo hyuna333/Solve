@@ -1,16 +1,9 @@
-import sys
+N = int(input())
 
-N = int(sys.stdin.readline())
-score = list(map(int, sys.stdin.readline().split()))
+lst = list(map(int, input().split()))
 
-mx = max(score)
-sm = 0
+M = max(lst)
 
-for i in score:
-    i = i/mx*100
-    sm += i
+scores = [x/M*100 for x in lst]
 
-avg = sm/N
-
-print(avg)
-
+print(sum(scores)/N)
