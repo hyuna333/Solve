@@ -1,21 +1,28 @@
 import sys
 
 N = int(sys.stdin.readline())
-for _ in range(N):
-    lst = list(sys.stdin.readline().rstrip())
-    stk = []
-    ans = 'YES'
-    for i in lst:
-        if i == '(':
-            stk.append(i)
-        elif stk and i == ')':
-            stk.pop()
-        else:
-            ans = 'NO'
-            break
+dct = {')':'(', ']':'['}
 
-    if stk:
+for _ in range(N):
+    st = sys.stdin.readline()
+
+    lst = []
+    ans = 'YES'
+
+    for ch in st:
+        if ch == '(' or ch == '[':
+            lst.append(ch)
+        elif ch == ')' or ch == ']':
+            if lst:
+                if lst[-1] == dct[ch]:
+                    lst.pop()
+                else:
+                    ans = 'NO'
+                    break
+            else:
+                ans = 'NO'
+                break
+    if lst:
         ans = 'NO'
 
     print(ans)
-
