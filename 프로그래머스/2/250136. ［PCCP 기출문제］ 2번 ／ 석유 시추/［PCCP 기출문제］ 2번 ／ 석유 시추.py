@@ -1,9 +1,9 @@
-def bfs(si, sj, n, m, vi, land, lst):
+def bfs(si, sj, n, m, vi, land):
     q = [(si, sj)]
     vi[si][sj] = 1
     cnt = 1
     s = e = sj
-    
+
     while q:
         ci, cj = q.pop(0)
         e = max(e, cj)
@@ -13,25 +13,23 @@ def bfs(si, sj, n, m, vi, land, lst):
                 q.append((ni, nj))
                 vi[ni][nj] = 1
                 cnt += 1
-    for i in range(s, e+1):
-        lst[i] += cnt
-    
-    return cnt
+
+    return cnt, s, e
 
 
 def solution(land):
     answer = 0
     n = len(land)
     m = len(land[0])
-    vi = [[0] * m for _ in range(n)]
     lst = [0] * m
-    
+    vi = [[0] * m for _ in range(n)]
+
     for i in range(m):
-        tmp = 0
-        
         for j in range(n):
             if land[j][i] and not vi[j][i]:
-                tmp += bfs(j, i, n, m, vi, land, lst)
+                cnt, s, e = bfs(j, i, n, m, vi, land)
+                for k in range(s, e + 1):
+                    lst[k] += cnt
         answer = max(lst)
 
     return answer
