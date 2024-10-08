@@ -1,15 +1,16 @@
 import sys
 input = sys.stdin.readline
 
-ze = one = 0
 S = input()
+ze = S.count('0') // 2
+one = S.count('1')
 
-for ch in S:
-    if ch == '1':
-        one += 1
+tmp = S.replace('1', '', one//2)
+ans = ''
+for i in range(len(tmp)-1, -1, -1):
+    if tmp[i] == '0' and ze:
+        ze -= 1
     else:
-        ze += 1
+        ans = tmp[i] + ans
 
-ans = '0' * (ze//2) + '1' * (one//2)
 print(ans)
-
