@@ -3,6 +3,9 @@ input = sys.stdin.readline
 
 def start(n, alst, blst, N):
     global ans
+    if n > N // 2:
+        if len(alst) > N//2 or len(blst) > N//2:
+            return
 
     if n == N:
         if len(alst) == N // 2:
