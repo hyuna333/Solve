@@ -5,15 +5,12 @@ from collections import deque
 
 N, M = map(int, input().split())
 lab = [list(map(int, input().split())) for _ in range(N)]
-two = []
 zero = []
 
 for i in range(N):
     for j in range(M):
         if lab[i][j] == 0:
             zero.append((i, j))
-        elif lab[i][j] == 2:
-            two.append((i, j))
 
 # 바이러스 퍼트리는 거
 def bfs(si, sj):
